@@ -1,0 +1,112 @@
+//oop 5
+
+#include<iostream>
+using namespace std;
+
+template <class T>
+void display(T A[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        cout<<A[i]<<","<<endl;
+    }
+}
+
+template <class T>
+void selectionsort(T A[],int n)
+{
+    int i,j,min;
+    T a;
+    for(i=0;i<n-1;i++)
+    {
+        min=i;
+        for(j=i+1;j<n;j++)
+        {
+            if(A[j]<A[min])
+            {
+                min=j;
+            }
+        }
+        
+        a=A[i];
+        A[i]=A[min];
+        A[min]=a;
+    }
+}
+
+int main()
+{
+    int A[50];
+    float B[50];
+    int n;
+    cout<<"\n Enter no. of elements: ";
+    cin>>n;
+    cout<<"\n enter integer no. :";
+    for(int i=0;i<n;i++)
+    {
+        cin>>A[i];
+    }
+    cout<<"\n enter floats no. :";
+    for(int i=0;i<n;i++)
+    {
+        cin>>B[i];
+    }
+    cout<<"\n original integer array:";
+    display(A,n);
+    selectionsort(A,n);
+    
+    cout<<"\n sorted integer array:";
+    display(A,n);
+    
+    cout<<"\n original float array:";
+    display(B,n);
+    selectionsort(B,n);
+    
+    cout<<"\n sorted float array:";
+    display(B,n);
+    
+    return 0;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Here’s a simple and short algorithm for the above code:
+
+1. **Input:**
+   - Ask the user for the number of elements.
+   - Take two arrays as input: one for integers and one for floats.
+
+2. **Display Original Arrays:**
+   - Show the original integer array.
+   - Show the original float array.
+
+3. **Sort Arrays using Selection Sort:**
+   - For the integer array:
+     - Loop through each element, find the smallest element in the unsorted part, and swap it with the first unsorted element.
+   - Repeat the same process for the float array.
+
+4. **Display Sorted Arrays:**
+   - Show the sorted integer array.
+   - Show the sorted float array.
+
+5. **End.**
+
+This is the basic flow of the program: input the arrays, sort them using selection sort, and display the results.
