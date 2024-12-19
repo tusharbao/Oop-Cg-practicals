@@ -1,0 +1,178 @@
+//oop 6
+
+#include<iostream>
+#include<map>
+#include<iterator>
+#include<vector>
+#include<algorithm>
+#include<string>
+using namespace std;
+
+
+class student
+{
+
+	public:
+			int r;
+	        string name,dob;
+		void read()
+		{
+			cin>>r>>name>>dob;
+		}
+		
+		void show()
+		{
+			cout<<r<<name<<dob;
+		}
+		
+	bool operator==(const student &s)
+		{return (r==s.r);
+		}
+};
+
+void insert(vector<student> &v)
+{
+	student ob;
+	ob.read();
+	v.push_back(ob);
+	cout<<"\n Data added successfuly";
+}
+
+
+void display(vector<student>v)
+{
+	vector<student>:: iterator itr;
+	for(itr=v.begin();itr!=v.end();itr++)
+	{
+		itr->show();
+		
+	}
+	
+}
+
+void search(vector<student> v)
+{
+    student ob;
+    cout<<"\n enter which no.to search:";
+    cin>>ob.r;
+    
+    vector<student>:: iterator itr;
+    itr=find(v.begin(),v.end(),ob);
+    if(itr==v.end())
+    {
+        cout<<"\n record is not found";
+    }
+    else
+    {
+        cout<<"\n record is found";
+        itr->show();
+    }
+}
+void del(vector<student> &v)
+{
+    student ob;
+    cout<<"\n enter which no. to delete: ";
+    cin>>ob.r;
+    vector <student> :: iterator itr; 
+    itr=find(v.begin(),v.end(),ob);
+    
+    if (itr==v.end())
+    {
+        cout<<"\n student not found ";
+    }
+    else
+    {
+        v.erase(itr);
+        cout<<"\n Deleted successfully ";
+        display(v);
+    }
+}
+
+
+bool check1(student &s1,student &s2)
+{
+	return(s1.r<s2.r);
+}
+
+void sorting(vector<student> &v)
+{
+	sort(v.begin(),v.end(),check1);
+	cout<<"It is sorted";
+}
+
+
+
+int main()
+{
+	vector<student>v;
+	int ch,i;
+	char choice;
+	
+	do
+	{
+		cout<<"\n 1.create  \n 2.display  \n 3.insert \n 4.search \n 5.delete \n 6.sort";
+		cout<<"\n enter your choice:";
+		cin>>ch;
+		
+		switch(ch)
+		{
+			case 1: 			
+                 	int n,i;
+					cout<<"Enter how many students you want to enter the Data:";
+					cin>>n;
+					for(i=0;i<n;i++)
+					{
+						insert(v);
+					}
+				break;
+			        
+			case 2: display(v);
+			        break;
+			        
+			case 3: insert(v);
+			        break;
+						
+			case 4:
+					search(v);
+					break;
+			case 5:
+					del(v);
+					break;
+			case 6:
+					sorting(v);
+					break;        
+		}
+		
+	
+	cout<<"\n do you want to continue(y/n): ";
+	cin>>choice;
+    }
+    while(choice=='y');
+    return 0;
+}
+
+
+
+
+
+
+
+//Here’s a more concise algorithm:
+
+1. **Student Class**:
+   - **Attributes**: roll number (`r`), name, and date of birth (`dob`).
+   - **Methods**: 
+     - `read()`: Input student data.
+     - `show()`: Display student data.
+
+2. **Functions**:
+   - **insert(v)**: Add student to vector `v`.
+   - **display(v)**: Show all students.
+   - **search(v)**: Find a student by roll number.
+   - **del(v)**: Delete a student by roll number.
+   - **sorting(v)**: Sort students by roll number.
+
+3. **Main Program**:
+   - Display options: Create, Display, Insert, Search, Delete, Sort.
+   - Perform selected operation based on user input.
+   - Ask if the user wants to continue.
