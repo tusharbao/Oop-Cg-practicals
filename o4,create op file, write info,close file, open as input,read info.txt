@@ -1,0 +1,154 @@
+//oop 4
+
+
+#include<iostream>
+#include<fstream>
+using namespace std;
+
+class item
+{
+
+    string name;
+    int price;
+    public:
+    int id;
+    void read()
+    {
+        cout<<"\n enter name:";
+        cin >>name;
+        cout<<"\n enter price:";
+        cin >>price;
+        cout<<"\n enter id:";
+        cin >>id;
+    }
+    void display()
+    {
+        cout<<"\n Name="<<name;
+        cout<<"\n Price="<<price;
+        cout<<"\n ID="<<id;
+    }
+};
+
+int main()
+{
+    item b;
+    int i,n;
+    int ch,sch;
+    ofstream fout;
+    ifstream fin;
+    char choice;
+    
+    do
+    {
+        cout<<"1.Read data \n2.display data \n3.Append ";
+        cout<<"\n enter choice:";
+        cin>>ch;
+        
+        switch(ch)
+        {
+            case 1:fout.open("item.txt");
+            cout<<"Enter no of item you want:";
+            cin>>n;
+            for(i=0;i<n;i++)
+            {
+                b.read();
+                fout.write((char*)&b,sizeof(b));
+            }
+            fout.close();
+            break;
+            
+            case 2:fin.open("item.txt");
+                    while(fin.read((char*)&b,sizeof(b)));
+                    {
+                        b.display();
+                
+                    }
+                    fin.close();
+                    break;
+                    
+            case 3:fout.open("item.txt",ios::app);
+                   b.read();
+                   fout.write((char*)&b,sizeof(b));
+                   fout.close();
+                   break;
+                   
+/*            case 4:fin.open("item.txt");
+                    cout<<"\n enter the id to search:";
+                    cin>>sch;
+                    int flag=0;
+                    
+                    do
+                    {
+                        fin.read((char*)&b,sizeof(b));
+                        if (b.id==sch)
+                        {
+                            b.display();
+                            flag=1;
+                        }
+                        
+                        
+                        
+                    }
+                    while(fin.eof()==0);
+                    if(flag==0)
+                    {
+                        cout<<"\n item not found";
+                    }
+                    fin.close();
+                    break;
+     */               
+            
+        }
+        cout<<"\n do you want to continue(y/n):";
+        cin>>choice;
+        
+    }
+    while(choice=='y');
+    return 0;
+    
+}
+
+
+
+
+
+
+
+//### Algorithm for the Code:
+
+1. **Define a Class**:  
+   - Create a class `item` with attributes: `name`, `price`, and `id`.  
+   - Include methods:
+     - `read()` to take input from the user.
+     - `display()` to print item details.
+
+2. **Main Function**:  
+   - Declare an object `b` of class `item`.  
+   - Define variables for user choice (`ch`), number of items (`n`), and search ID (`sch`).  
+   - Use file streams (`ofstream` for writing, `ifstream` for reading).
+
+3. **Loop for Menu Options**:  
+   - Display a menu with the following choices:  
+     1. **Read Data**:
+        - Open file `item.txt` in write mode.
+        - Ask the user for the number of items.
+        - For each item:
+          - Call `read()` to take input.
+          - Write the object to the file.
+        - Close the file.
+     2. **Display Data**:
+        - Open file `item.txt` in read mode.
+        - Read all objects from the file using `read()` and call `display()` for each object.
+        - Close the file.
+     3. **Append Data**:
+        - Open file `item.txt` in append mode.
+        - Call `read()` to take input for one item.
+        - Write the object to the file.
+        - Close the file.
+   - End of menu.
+
+4. **Continue or Exit**:  
+   - Ask the user if they want to continue (y/n).  
+   - Repeat the loop if the user enters 'y'.
+
+5. **End Program**.
