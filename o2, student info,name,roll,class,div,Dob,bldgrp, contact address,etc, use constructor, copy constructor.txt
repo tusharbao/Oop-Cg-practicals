@@ -1,0 +1,163 @@
+// oop 2, student info,name,roll,class,div,Dob,bldgrp, contact address,etc, use constructor, copy constructor
+
+//#include <iostring>
+#include <iostream>
+using namespace std;
+
+class student
+{
+static int count;
+int r,telno;
+string name, addrs, cls,div, dob, bldgrp;
+
+public:
+
+student()
+{
+    r = 4;
+    name = "x";
+    addrs="AVCOE";
+    cls="SE";
+    dob ="xx/xx/xxxx";
+    div ="A";
+    bldgrp="A +ve";
+    telno=00000;
+    count++;
+}
+student (student & c)
+{
+r =c.r;
+name = c. name;
+addrs= c. addrs;
+cls=c. cls;
+dob= c. dob;
+div = c. div;
+bldgrp= c.bldgrp;
+telno = c. telno;
+count ++;
+}
+
+void read()
+{
+cout <<"\n  Enter name, address:";
+cin.ignore();
+getline (cin, name);
+cin.ignore();
+getline (cin, addrs);
+cout <<"\n Roll no, Class & Division:";
+cin >>r>>cls>> div ;
+cout <<"\n Enter Date of Birth:";
+cin.ignore ();
+getline (cin, dob);
+cout << " \n Enter blood group, telno:";
+cin >> bldgrp>> telno;
+}
+static void displaycount()
+
+{
+ cout << "\n No of students:" << count;
+}
+
+~student()
+{
+cout <<"\n" << this-> name <<" is destroyed";
+}
+
+friend void display (student *p);
+};
+
+int student::count = 0;
+
+void display(student *p)
+{
+cout <<"\n"<<" Name: "<<p->name << " \n Roll no. "<<p->r;
+cout << "\n Address: " << p-> addrs <<"\n Class: "<<p->cls;
+cout <<" \n Date of Birth:" << p-> dob;
+cout << "\n Division:" << p-> div <<"\n Bld grp: "<< p-> bldgrp;
+cout << "\n Telephone no: " << p-> telno;
+}
+
+int main()
+{
+student s1, s2 (s1);
+int n,i;
+student *ptr[n];
+cout << "\n How many students data you want to enter:";
+cin >> n;
+
+for (i=0 ;i<n; i++)
+{
+ptr[i] = new student();
+ptr[i]-> read ();
+}
+
+cout << "\n students data :";
+cout << "\n In student "<< 1 <<" Details:";
+display (&s1);
+cout <<" \n In student "<< 2 <<"Details:";
+display (&s2);
+
+for (i=0; i<n; i++)
+{
+cout <<"\n" << "student" << i+3 << "Details:"; 
+display (ptr[i]);
+}
+
+student::displaycount();
+
+for (i=0; i<n; i++)
+{
+delete (ptr[i]);
+}
+
+return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//### Algorithm for the Given Code:
+
+1. **Start.**
+
+2. **Define the `student` class** with:
+   - Static variable `count`.
+   - Member variables for roll number, name, address, class, division, DOB, blood group, and telephone number.
+   - Constructors:
+     - Default constructor initializes data members with default values and increments `count`.
+     - Copy constructor copies data from another object and increments `count`.
+   - A `read` function to take input from the user.
+   - A `displaycount` function to display the total number of student objects created.
+   - A destructor to indicate when an object is destroyed.
+   - A friend function `display` to print student details.
+
+3. **Define `student::count` as 0**.
+
+4. **Define the `display` function** to print details of a `student` object.
+
+5. **In `main`:**
+   - Create two `student` objects (`s1` and `s2`) using default and copy constructors.
+   - Ask the user how many student details they want to enter.
+   - Dynamically allocate memory for student objects in an array of pointers (`ptr`).
+   - Call the `read` function for each dynamically created student to input details.
+
+6. **Display details** of `s1`, `s2`, and all dynamically created students using the `display` function.
+
+7. **Call `student::displaycount`** to show the total number of student objects created.
+
+8. **Deallocate memory** for dynamically created students using `delete`.
+
+9. **End.**
