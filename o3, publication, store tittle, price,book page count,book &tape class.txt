@@ -1,0 +1,160 @@
+//oop 3
+
+#include<iostream>
+#include<cstring>
+using namespace std;
+
+class publication 
+{
+protected:
+    float price;
+    char tittle[20];
+
+public:
+    void read() 
+    {
+        cout << "\n Tittle: ";
+        cin >> tittle;
+        cout << "\n Price: ";
+        cin >> price;
+    }
+
+    void display() 
+    {
+        cout << "\n Tittle = " << tittle;
+        cout << "\n Price = " << price << " Rs";
+    }
+};
+
+class book : public publication 
+{
+    int pagecount;
+
+public:
+    void readp()
+    {
+        read();
+        cout << "\n Page count: ";
+        cin >> pagecount;
+
+        try {
+            if (pagecount <= 0)
+            {
+                throw 1;  
+            }
+        }
+        catch (int i)
+        {
+            
+            cout << "\n Invalid page count entered. Resetting book information.";
+            tittle[0] = '\0';  // Reset tittle to an empty string
+            price = 0;
+            pagecount = 0;
+        }
+    }
+
+    void display() 
+    {
+        publication::display();
+        cout << "\n Page count = " << pagecount;
+    }
+};
+
+class caset : public publication 
+{
+    float playtime;
+
+public:
+    void readtime()
+    {
+        read();
+        cout << "\n Play time: ";
+        cin >> playtime;
+
+        try {
+            if (playtime <= 0) 
+            {
+                throw 1;  
+            }
+        }
+        catch (float p) 
+        {
+            
+            cout << "\n Invalid play time entered. Resetting cassette information.";
+            tittle[0] = '\0';  // Reset tittle to an empty string
+            price = 0;
+            playtime = 0;
+        }
+    }
+
+    void displaytime() 
+    {
+        publication::display();
+        cout << "\n Play time = " << playtime;
+    }
+};
+
+int main() 
+{
+    book ob1;
+    caset ob2;
+
+    cout << "\n Book Information";
+    ob1.readp();
+    ob1.display();
+
+    cout << "\n Cassette Information";
+    ob2.readtime();
+    ob2.displaytime();
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//### Algorithm for the Code:
+
+1. **Start**  
+2. Define a base class `publication` with:  
+   - Protected members: `price` (float) and `tittle` (character array).  
+   - Public methods:  
+     - `read()`: To input `tittle` and `price`.  
+     - `display()`: To show `tittle` and `price`.  
+
+3. Define a derived class `book` from `publication`:  
+   - Private member: `pagecount` (integer).  
+   - Public methods:  
+     - `readp()`:  
+       - Call `read()` to input common data.  
+       - Input `pagecount`.  
+       - If `pagecount <= 0`, throw an exception and reset all attributes.  
+     - `display()`:  
+       - Call `display()` from `publication`.  
+       - Show `pagecount`.  
+
+4. Define another derived class `caset` from `publication`:  
+   - Private member: `playtime` (float).  
+   - Public methods:  
+     - `readtime()`:  
+       - Call `read()` to input common data.  
+       - Input `playtime`.  
+       - If `playtime <= 0`, throw an exception and reset all attributes.  
+     - `displaytime()`:  
+       - Call `display()` from `publication`.  
+       - Show `playtime`.  
+
+5. In `main()`:  
+   - Create objects of `book` and `caset`.  
+   - Call `readp()` and `display()` for `book`.  
+   - Call `readtime()` and `displaytime()` for `caset`.  
+
+6. **End**
