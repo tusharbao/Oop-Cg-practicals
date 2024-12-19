@@ -1,0 +1,213 @@
+// oop 1
+#include <iostream>
+using namespace std;
+
+class complex
+{
+    int real,imag;
+    public:
+    
+    complex()
+    {
+        real=imag=0;
+    }
+    void read()
+    {
+        cout<<"\n enter real & imag part: ";
+        cin>>real>>imag;
+        
+    }
+    
+    void display()
+    {
+        cout<<real<<"+"<<imag<<"i"<<endl;
+    }
+    
+    complex operator+(complex c2)
+    {
+        complex c3;
+        c3.real=real+c2.real;
+        c3.imag=imag+c2.imag;
+        return c3;
+    }
+    
+    complex operator*(complex c2)
+    {
+       complex c4;
+       c4.real=(real*c2.real)+(imag*c2.imag); 
+       c4.imag=(real*c2.imag)+(imag*c2.real);
+       return c4;
+    }
+};
+
+int main()
+{
+    complex c1,c2,c3,c4;
+    int ch;
+    char choice;
+    
+    do
+    {
+        cout<<"\n 1.read complex numbers  \n 2.Add two complex numbers  \n 3.multiply two complex numbers";
+        cout<<"\n enter your choice:";
+        cin>>ch;
+        
+        switch(ch)
+        {
+            case 1:c1.read();
+                    c2.read();
+                    break;
+                    
+            case 2:c3=c1+c2;
+                    c1.display();
+                    c2.display();
+                    cout<<"\n Addition:";
+                    c3.display();
+                    break;
+                    
+            case 3: c4=c1*c2;
+                    c1.display();
+                    c2.display();
+                    cout<<"\n Multiplication:";
+                    c4.display();
+                    
+                    
+            default:cout<<"\n invlid choice ";
+            
+        }
+        
+        cout<<"\n do you want to continue(y/n):";
+        cin>>choice;
+    }
+    while(choice=='y');
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//### Algorithm for the Complex Number Program:
+
+1. **Start.**  
+2. Create a `complex` class with:  
+   - Two integer members: `real` and `imag` (default initialized to 0 in the constructor).  
+   - Methods to:
+     - Read complex numbers (`read()`).
+     - Display complex numbers (`display()`).
+     - Overload the `+` operator for addition of two complex numbers.  
+     - Overload the `*` operator for multiplication of two complex numbers.  
+3. In `main()`, declare four `complex` objects: `c1`, `c2`, `c3`, and `c4`.  
+4. Use a loop to:
+   - Display the menu:
+     1. Read two complex numbers.
+     2. Add two complex numbers.
+     3. Multiply two complex numbers.
+   - Take the user's choice.
+   - Perform the selected operation using:
+     - `read()` for input.
+     - Overloaded `+` for addition.
+     - Overloaded `*` for multiplication.
+     - `display()` to show results.
+   - If the choice is invalid, show an error message.  
+5. Ask if the user wants to continue; repeat if yes (`y`).  
+6. End.
+
+
+//#include<iostream>
+using namespace std;
+
+class comp
+{
+    int real,imag;
+    public:
+    comp()
+    {
+        real=0;
+        imag=0;
+    }
+
+    comp operator +(comp a1)
+    {
+        comp temp;
+        temp.real=real+a1.real;
+        temp.imag=imag+a1.imag;
+        return temp;
+    }
+
+    comp operator *(comp a2)
+    {
+        comp temp1;
+        temp1.real=(real*a2.real)-(imag*a2.imag);
+        temp1.imag=(real*a2.imag)+(imag*a2.real);
+        return temp1;
+    }
+
+    friend comp operator -(comp a3,comp a4);  //no need but for practice
+    friend ostream &operator <<(ostream &output,comp &c);
+    friend istream &operator >>(istream &input,comp &c);
+};
+comp operator -(comp a3,comp a4)
+{
+    comp temp2;
+    temp2.real=a3.real-a4.real;
+    temp2.imag=a3.imag-a4.imag;
+    return temp2;
+}
+
+ostream &operator <<(ostream &output,comp &c)
+{
+    output<<c.real<<"+"<<c.imag<<"i"<<endl;
+}
+
+istream &operator >>(istream &input,comp &c)
+{
+    cout<<"enter  real number :";
+    input>>c.real;
+    cout<<"enter imaginary number :";
+    input>>c.imag;
+}
+
+int main()
+{
+    int n;
+    
+    comp obj1,obj2,obj3;
+    cin>>obj1;
+    cin>>obj2;
+    cout<<"enter \n1.Addition\n2.multipication\n3.subtraction"<<endl;
+    cin>>n;
+    
+    switch(n)
+    {
+        case 1:
+            obj3=obj1+obj2;
+            cout<<obj3;
+            break;
+        case 2:
+            obj3=obj1*obj2;
+            cout<<obj3;
+            break;
+        case 3:
+            obj3=obj1-obj2;
+            cout<<obj3;
+            break;
+        default:
+            cout<<"Invalid Input";
+            break;
+
+    }
+
+    return 0;
+}
