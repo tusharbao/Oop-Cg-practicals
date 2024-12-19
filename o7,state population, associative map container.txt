@@ -1,0 +1,72 @@
+//Oop 7
+
+
+#include<iostream>
+#include<map>
+#include<iterator>
+using namespace std;
+
+int main()
+{
+	int i,n , p;
+	string state;
+	map<string, int>mymap;
+	cout<<"\n Enter how many state you want to enter :";
+	cin>>n;
+	
+	for(i=0;i<n;i++)                              //for reading the data
+	{
+		cout<<"\n Enter state :";
+		cin>>state;
+		cout<<"\n Enter population:";
+		cin>>p;
+		
+		mymap.insert(make_pair(state,p));
+		
+	}
+	
+	map<string,int>:: iterator itr;                    // to create iterator
+	cout<<"\n show state and population:";
+	for(itr= mymap.begin();itr!=mymap.end();itr++)
+	{
+		cout<<(*itr).first<<"\t"<<(*itr).second;
+	}
+	
+	cout<<"\n Enter which state to search:";
+	cin>>state;
+	
+	itr=mymap.find(state);
+	if(itr==mymap.end())
+	{
+	cout<<state<<"not found";
+    }
+	else
+	{
+	cout<<"\n population of"<<state<<"is"<<(*itr).second;
+    }
+	return 0;
+}
+
+
+
+
+
+
+
+
+//### Algorithm for the Given Code:
+
+1. **Start** the program.
+2. **Input** the number of states (n) you want to enter.
+3. Repeat the following steps for **n** times:
+   - **Input** the state name.
+   - **Input** the population of the state.
+   - Store the state name and its population in a map.
+4. **Display** all the states and their populations from the map.
+5. **Input** the state name to search.
+6. **Search** if the state is in the map:
+   - If the state is **not found**, display a message saying it's not found.
+   - If the state is **found**, display its population.
+7. **End** the program.
+
+This simple algorithm covers the steps of reading data, storing it in a map, and searching for a specific state.
