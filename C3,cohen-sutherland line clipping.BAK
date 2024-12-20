@@ -171,3 +171,19 @@ PT resetendpt(PT p1,PT p2)
  else
  return(p1);
  }
+
+
+
+
+//### Short Algorithm
+
+1. **Start the program.**  
+2. **Initialize graphics mode.**  
+3. **Input line endpoints \((x1, y1)\) and \((x2, y2)\).**  
+4. **Draw the clipping window.**  
+5. **Assign region codes to the endpoints.**  
+6. **Check visibility:**  
+   - Accept if fully inside, reject if fully outside, else clip.  
+7. **Clip the line using intersection calculations.**  
+8. **Draw the clipped line.**  
+9. **Close graphics and exit.**  
