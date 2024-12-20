@@ -1,0 +1,41 @@
+//cg 14 bouncing ball
+
+#include<dos.h>
+#include<iostream.h>
+#include<graphics.h>
+#include<math.h>
+#include<conio.h>
+//#include<cmath.h>
+//#include<iostream>
+int main()
+{
+int gd=DETECT,gm;
+initgraph(&gd,&gm,NULL);
+float x=50,y,j=0.5,count=0.1;
+int groundY=215;
+int radius=15;
+int i=0;
+
+setcolor(WHITE);
+for(int k=0;k<7;k++)
+{
+ for(i=90;i<=270;i+=10)
+ {
+   y=cos(i*M_PI/180)/j;
+   cleardevice();
+//   x+=5;
+circle(x,y*100+groundY,radius);
+floodfill(x,y*100+groundY,WHITE);
+line(0,groundY+radius,getmaxx(),groundY+radius);
+
+ delay(50);
+//clrscr();
+ }
+j+=count;
+count+=0.1;
+x+=50;
+}
+getch();
+closegraph();
+return 0;
+}
