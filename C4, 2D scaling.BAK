@@ -56,3 +56,19 @@ int main() {
     closegraph();
     return 0;
 }
+
+
+
+
+//### Short Algorithm for 2D Scaling Program
+
+1. **Start the program.**  
+2. **Initialize graphics mode.**  
+3. **Input the coordinates of the triangle vertices.**  
+4. **Draw the original triangle.**  
+5. **Input scaling factors \(S_x\) and \(S_y\).**  
+6. **Multiply each vertex coordinate by the corresponding scaling factor:**  
+   - \(x' = x \times S_x\)  
+   - \(y' = y \times S_y\)  
+7. **Draw the scaled triangle.**  
+8. **Close graphics and exit.**  
