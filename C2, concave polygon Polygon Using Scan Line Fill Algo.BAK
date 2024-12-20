@@ -74,7 +74,7 @@ void poly::display()
 float s,s2;
 s=ymin+0.01;
  delay(100);
- //    cleardevice();
+ // Â  Â cleardevice();
  for(i=0;i<v;i++)
  {
 
@@ -156,3 +156,25 @@ poly x;
  getch();
  return 0;
 }
+
+
+
+
+
+
+
+
+
+//### Short Algorithm
+
+1. **Start the program.**  
+2. **Initialize graphics mode.**  
+3. **Input the polygon vertices.**  
+4. **Find the min (`ymin`) and max (`ymax`) y-coordinates.**  
+5. **Draw the polygon outline.**  
+6. **For each scan line from `ymin` to `ymax`:**  
+   - Find intersection points with polygon edges.  
+   - Sort intersections by `x`-coordinate.  
+   - Fill between pairs of intersections.  
+7. **Set the fill color and display the filled polygon.**  
+8. **Close graphics and exit.**  
