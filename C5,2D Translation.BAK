@@ -56,3 +56,17 @@ int main() {
     closegraph();
     return 0;
 }
+
+
+### Short Algorithm for 2D Translation Program
+
+1. **Start the program.**  
+2. **Initialize graphics mode.**  
+3. **Input the coordinates of the triangle vertices.**  
+4. **Draw the original triangle.**  
+5. **Input translation factors \(T_x\) and \(T_y\).**  
+6. **Add translation factors to each vertex coordinate:**  
+   - \(x' = x + T_x\)  
+   - \(y' = y + T_y\)  
+7. **Draw the translated triangle.**  
+8. **Close graphics and exit.**
