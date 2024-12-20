@@ -30,3 +30,29 @@ count+=0.1;
 getch();
 return 0;
 }
+
+
+
+
+
+
+
+
+
+
+//### Short Algorithm for Bouncing Ball Program
+
+1. **Start the program.**  
+2. **Initialize graphics mode.**  
+3. **Set initial values for the ball's position and velocity.**
+   - `x = 1, y = 0.5` (ball position).
+   - `j = 0.5` (gravity effect).
+4. **Draw the bouncing ball in a loop:**
+   - Use `cos` to calculate vertical movement for the bouncing effect.
+   - Update the ball's horizontal position (`x += 5`).
+   - Draw the ball using `circle()` and fill it using `floodfill()`.
+   - Draw a line to simulate the ground.
+   - Clear the screen after each frame using `clrscr()`.
+5. **Increase the gravity effect (`j`) and adjust the count (`count`) after each iteration to make the ball bounce higher.**
+6. **Delay the loop to control the speed of the animation.**
+7. **End the program after the loop.**
