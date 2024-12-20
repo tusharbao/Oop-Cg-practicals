@@ -38,3 +38,27 @@ getch();
 closegraph();
 return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+//### Short Algorithm for Hilbert Curve (Koch Curve) Program
+
+1. **Start the program.**  
+2. **Initialize graphics mode.**  
+3. **Define the `koch` function to draw the Koch curve:**  
+   - Calculate the midpoints and new points for each iteration.
+   - Rotate the middle segment by 60°.
+   - Recursively apply the Koch curve function to the new segments until the iteration count is reached.
+4. **Input the starting and ending points for the line.**  
+5. **Input the number of iterations.**  
+6. **Draw the Koch curve recursively.**  
+7. **Close graphics and exit.**  
