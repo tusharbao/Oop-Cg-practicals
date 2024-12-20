@@ -110,3 +110,16 @@ system("clear");
 return 0;
 }
 
+
+
+
+
+//### Short Algorithm
+
+1. **Start the program.**  
+2. **Initialize graphics mode.**  
+3. **Input circle center `(x, y)` and radii `r1`, `r2`.**  
+4. **Draw outer circle (`r1`) and inner circle (`r2`).**  
+5. **Calculate triangle vertices based on circle radii.**  
+6. **Draw the triangle using the DDA line algorithm.**  
+7. **Close graphics and exit.**  
