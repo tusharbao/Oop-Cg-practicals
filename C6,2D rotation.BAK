@@ -60,3 +60,20 @@ int main() {
     closegraph();
     return 0;
 }
+
+
+
+//### Short Algorithm for 2D Rotation Program
+
+1. **Start the program.**  
+2. **Initialize graphics mode.**  
+3. **Input the coordinates of the triangle vertices.**  
+4. **Draw the original triangle.**  
+5. **Input the angle of rotation \(r\) (in degrees).**  
+6. **Convert the angle to radians:**  
+   - \(\theta = \frac{r \times \pi}{180}\)  
+7. **Apply the rotation transformation to each vertex:**  
+   - \(x' = x \times \cos(\theta) - y \times \sin(\theta)\)  
+   - \(y' = x \times \sin(\theta) + y \times \cos(\theta)\)  
+8. **Draw the rotated triangle.**  
+9. **Close graphics and exit.**  
