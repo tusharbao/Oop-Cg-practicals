@@ -1,0 +1,58 @@
+#include<conio.h>
+//C4, 2D scaling
+#include <graphics.h>
+#include <iostream.h>
+//using namespace std;
+
+class triangle {
+    int x1, x2, x3, y1, y2, y3, nx1, nx2, nx3, ny1, ny2, ny3, c;
+
+public:
+    void read();
+    void draw();
+    triangle operator*(triangle t);
+};
+
+void triangle::read() {
+    cout << "\t Program for Scaling\n";
+    cout << "\n\t Enter the coordinates of triangle\n";
+    setcolor(11);
+    cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+}
+
+void triangle::draw() {
+    line(x1, y1, x2, y2);
+    line(x2, y2, x3, y3);
+    line(x3, y3, x1, y1);
+}
+
+triangle triangle::operator*(triangle t) {
+    float sx, sy;
+    cout << "\nEnter the scaling factors (Sx and Sy): ";
+    cin >> sx >> sy;
+
+    t.x1 = x1 * sx;
+    t.y1 = y1 * sy;
+    t.x2 = x2 * sx;
+    t.y2 = y2 * sy;
+    t.x3 = x3 * sx;
+    t.y3 = y3 * sy;
+
+    return t;
+}
+
+int main() {
+    int gm, gd = DETECT;
+    initgraph(&gd, &gm, NULL);
+
+    triangle t1, S;
+    t1.read();
+    t1.draw();
+
+    S = t1 * S; // Scaling
+    S.draw();
+
+   getch();
+    closegraph();
+    return 0;
+}
