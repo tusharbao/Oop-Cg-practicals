@@ -90,3 +90,67 @@ int main()
         }closegraph();
     return 0;
 }
+
+
+
+
+
+
+
+
+//### Algorithm for Geometric Transformations Program
+
+1. **Start**  
+   - Initialize the graphics mode using `initgraph()`.
+
+2. **Display Options**  
+   - Show a menu with the following choices:
+     1. Translation  
+     2. Rotation  
+     3. Scaling  
+     4. Reflection  
+     5. Shearing  
+
+3. **Take User Input**  
+   - Ask the user to select a transformation option.
+
+4. **Perform Selected Transformation**  
+   - Use `switch-case` to handle each transformation:
+     - **Case 1 (Translation)**:  
+       - Draw a rectangle.  
+       - Move (translate) it by adding a fixed value (`tx`, `ty`) to its coordinates.  
+       - Draw the translated rectangle.
+
+     - **Case 2 (Rotation)**:  
+       - Draw a rectangle.  
+       - Rotate it by a specified angle using rotation formulas:
+         - \( x' = x \cos(a) - y \sin(a) \)  
+         - \( y' = x \sin(a) + y \cos(a) \)  
+       - Draw the rotated rectangle.
+
+     - **Case 3 (Scaling)**:  
+       - Draw a rectangle.  
+       - Scale it by multiplying its coordinates by scaling factors (`sx`, `sy`).  
+       - Draw the scaled rectangle.
+
+     - **Case 4 (Reflection)**:  
+       - Draw a triangle.  
+       - Reflect it across the x-axis by changing the y-coordinates to `-y`.  
+       - Draw the reflected triangle.
+
+     - **Case 5 (Shearing)**:  
+       - Draw a rectangle.  
+       - Apply shearing by changing the x-coordinates using the formula:  
+         - \( x' = x + shx \cdot y \)  
+       - Draw the sheared rectangle.
+
+5. **Invalid Option**  
+   - If the user enters an invalid option, display an error message.
+
+6. **End Graphics Mode**  
+   - Close the graphics mode using `closegraph()`.
+
+7. **End Program**  
+   - Exit the program.
+
+This algorithm summarizes the flow of the program and simplifies its logic for understanding.
